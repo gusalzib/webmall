@@ -34,8 +34,29 @@ npm install memorystore
 // require("dotenv").config();
 // const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 // Variables
-var mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/webmall";
+const { MongoClient, ServerApiVersion } = require("mongodb");
+const uri =
+  "mongodb+srv://gusalzib:mongoose1234554321@cluster0.axnq0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+var mongoURI = process.env.MONGODB_URI || uri;
 var port = process.env.PORT || 3000;
+
+
+
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(mongoURI, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
+
+
+
+
+
 
 // Connect to MongoDB
 mongoose
@@ -105,8 +126,8 @@ app.get("/api", function (req, res) {
 app.use(history());
 // Serve static assets
 var root = path.normalize(__dirname + "/..");
-var client = path.join(root, "client", "dist");
-app.use(express.static(client));
+var clientPath = path.join(root, "client", "dist");
+app.use(express.static(clientPath));
 
 app.use(
   "/public/product_images",
