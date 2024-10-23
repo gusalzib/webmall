@@ -1,0 +1,2779 @@
+{
+	"info": {
+		"_postman_id": "c2df480b-8da9-4c67-bcce-5855058b1a5d",
+		"name": "server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38096643",
+		"_collection_link": "https://dazzling-pandas.postman.co/workspace/Dazzling-Pandas-Workspace~27f03e78-c3c7-460c-8656-bd9d6d846b14/collection/38096643-c2df480b-8da9-4c67-bcce-5855058b1a5d?action=share&source=collection_link&creator=38096643"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Signup",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"buyerID\", jsonData.buyerID);\r",
+									"pm.environment.set(\"cartID\", jsonData.cartID);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"fname\": \"admin\",\r\n        \"minit\": \"Postman\",\r\n        \"lname\": \"Postman\",\r\n        \"phone_number\": \"0937463534\",\r\n        \"email\": \"admin@gmail.com\",\r\n        \"street\": \"Postman Street :(\",\r\n        \"zipcode\": \"345 45\",\r\n        \"city\": \"Postman\",\r\n        \"password\": \"admin\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									" var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"message\", jsonData.message);\r",
+									"pm.environment.set(\"session_isAuth\", jsonData.session_isAuth);\r",
+									"pm.environment.set(\"sessionBuyerID\", jsonData.sessionBuyerID);\r",
+									"pm.environment.set(\"session_isAdmin\", jsonData.session_isAdmin);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Login CHECK",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									" var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"message\", jsonData.message);\r",
+									"pm.environment.set(\"session_isAuth\", jsonData.session_isAuth);\r",
+									"pm.environment.set(\"sessionBuyerID\", jsonData.sessionBuyerID);\r",
+									"pm.environment.set(\"session_isAdmin\", jsonData.session_isAdmin);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/login-check"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "Login again",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									" var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"message\", jsonData.message);\r",
+									"pm.environment.set(\"session_isAuth\", jsonData.session_isAuth);\r",
+									"pm.environment.set(\"sessionBuyerID\", jsonData.sessionBuyerID);\r",
+									"pm.environment.set(\"session_isAdmin\", jsonData.session_isAdmin);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "create product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response should have valid JSON data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql('Postman product');\r",
+									"    pm.expect(jsonData.price).to.eql(15);\r",
+									"    pm.expect(jsonData.category).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.discount).to.eql(1);\r",
+									"    pm.expect(jsonData.color).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.size).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.quantity).to.eql(12);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"productID\", jsonData._id);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef8e3ce-a647-49d0-8281-752101aae634"
+								},
+								{
+									"key": "name",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Postman product",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{host}}/api/add/product"
+					},
+					"response": []
+				},
+				{
+					"name": "create product Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response should have valid JSON data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql('Postman product');\r",
+									"    pm.expect(jsonData.price).to.eql(45);\r",
+									"    pm.expect(jsonData.category).to.eql(\"Electronics\");\r",
+									"    pm.expect(jsonData.discount).to.eql(1);\r",
+									"    pm.expect(jsonData.color).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.size).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.quantity).to.eql(12);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"productID\", jsonData._id);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef8e3ce-a647-49d0-8281-752101aae634"
+								},
+								{
+									"key": "name",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Electronics",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "45",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Postman product",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{host}}/api/add/product"
+					},
+					"response": []
+				},
+				{
+					"name": "create product Copy 4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response should have valid JSON data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql('Search String Product');\r",
+									"    pm.expect(jsonData.price).to.eql(35);\r",
+									"    pm.expect(jsonData.category).to.eql(\"Electronics\");\r",
+									"    pm.expect(jsonData.discount).to.eql(0);\r",
+									"    pm.expect(jsonData.color).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.size).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.quantity).to.eql(12);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"productID\", jsonData._id);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef8e3ce-a647-49d0-8281-752101aae634"
+								},
+								{
+									"key": "name",
+									"value": "Search String Product",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Electronics",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "35",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Postman product",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{host}}/api/add/product"
+					},
+					"response": []
+				},
+				{
+					"name": "create product Copy 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response should have valid JSON data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql('Postman product');\r",
+									"    pm.expect(jsonData.price).to.eql(25);\r",
+									"    pm.expect(jsonData.category).to.eql(\"Electronics\");\r",
+									"    pm.expect(jsonData.discount).to.eql(0);\r",
+									"    pm.expect(jsonData.color).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.size).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.quantity).to.eql(12);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"productID\", jsonData._id);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef8e3ce-a647-49d0-8281-752101aae634"
+								},
+								{
+									"key": "name",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Electronics",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "25",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Postman product",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{host}}/api/add/product"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200). Get request accepted.\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/products"
+					},
+					"response": []
+				},
+				{
+					"name": "Get products with filter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/products/filter/Electronics/1/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get/ search a product by search string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/products/search/products/string"
+					},
+					"response": []
+				},
+				{
+					"name": "Get  products on sale (discount > 0)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/products/sales"
+					},
+					"response": []
+				},
+				{
+					"name": "Get product by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200). Get request accepted.\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/single/product/{{productID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch product by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200). Get request accepted.\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"response should have valid JSON data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql('Postman product');\r",
+									"    pm.expect(jsonData.price).to.eql(25);\r",
+									"    pm.expect(jsonData.category).to.eql(\"Electronics\");\r",
+									"    pm.expect(jsonData.discount).to.eql(0);\r",
+									"    pm.expect(jsonData.color).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.size).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"Postman product (patch)\");\r",
+									"    pm.expect(jsonData.quantity).to.eql(12);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "Postman product (patch)",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef8e3ef-66de-4b10-b51b-d7633b5f4d1e"
+								}
+							]
+						},
+						"url": "{{host}}/api/products/patch/single/product/{{productID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update product by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200). Put request accepted.\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response should have valid JSON data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql('Postman product (put)');\r",
+									"    pm.expect(jsonData.price).to.eql(15);\r",
+									"    pm.expect(jsonData.category).to.eql(\"Postman product (put)\");\r",
+									"    pm.expect(jsonData.discount).to.eql(15);\r",
+									"    pm.expect(jsonData.color).to.eql(\"Postman product (put)\");\r",
+									"    pm.expect(jsonData.size).to.eql(\"Postman product (put)\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"Postman product (put)\");\r",
+									"    pm.expect(jsonData.quantity).to.eql(15);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Postman product (put)",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Postman product (put)",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Postman product (put)",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "Postman product (put)",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "Postman product (put)",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef8e410-6a4d-4960-81fa-f3e6403f5945"
+								}
+							]
+						},
+						"url": "{{host}}/api/products/edit/product/{{productID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200). Deletion request accepted\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{host}}/api/products/{{productID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200). Deletion request accepted\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{host}}/api/products/delete/products"
+					},
+					"response": []
+				},
+				{
+					"name": "create product (So that the products db has a product in it for later tests)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"response should have valid JSON data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql('Postman product');\r",
+									"    pm.expect(jsonData.price).to.eql(15);\r",
+									"    pm.expect(jsonData.category).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.discount).to.eql(1);\r",
+									"    pm.expect(jsonData.color).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.size).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.description).to.eql(\"Postman product\");\r",
+									"    pm.expect(jsonData.quantity).to.eql(12);\r",
+									"\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"productID\", jsonData._id);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef8e3ce-a647-49d0-8281-752101aae634"
+								},
+								{
+									"key": "name",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "Postman product",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Postman product",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{host}}/api/add/product"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Buyer",
+			"item": [
+				{
+					"name": "Get all buyers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fname\": \"ibrahim\",\r\n    \"minit\": \"IA\",\r\n    \"lname\": \"Alz\",\r\n    \"phone_number\": \"0937463534\",\r\n    \"email\": \"awesome@gmail.com\",\r\n    \"street\": \"Struggle Street :(\",\r\n    \"zipcode\": \"345 45\",\r\n    \"city\": \"Halmstad\",\r\n    \"password\": \"xxxxxxxxxxxx\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/buyers"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific buyer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fname\": \"ibrahim\",\r\n    \"minit\": \"IA\",\r\n    \"lname\": \"Alz\",\r\n    \"phone_number\": \"0937463534\",\r\n    \"email\": \"awesome@gmail.com\",\r\n    \"street\": \"Struggle Street :(\",\r\n    \"zipcode\": \"345 45\",\r\n    \"city\": \"Halmstad\",\r\n    \"password\": \"xxxxxxxxxxxx\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/buyers/{{sessionBuyerID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Get buyer profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fname\": \"ibrahim\",\r\n    \"minit\": \"IA\",\r\n    \"lname\": \"Alz\",\r\n    \"phone_number\": \"0937463534\",\r\n    \"email\": \"awesome@gmail.com\",\r\n    \"street\": \"Struggle Street :(\",\r\n    \"zipcode\": \"345 45\",\r\n    \"city\": \"Halmstad\",\r\n    \"password\": \"xxxxxxxxxxxx\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Update buyer (put)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fname\": \"admin\",\r\n    \"minit\": \"IA\",\r\n    \"lname\": \"Alz\",\r\n    \"phone_number\": \"0737449735\",\r\n    \"email\": \"admin@gmail.com\",\r\n    \"street\": \"Struggle Street :(\",\r\n    \"zipcode\": \"345 45\",\r\n    \"city\": \"Lund\",\r\n    \"password\": \"admin\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/buyers/edit/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Update buyer (patch)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"fname\": \"admin\",\r\n    \"minit\": \"IA\",\r\n    \"lname\": \"Alz\",\r\n    \"phone_number\": \"0737449735\",\r\n    \"email\": \"admin@gmail.com\",\r\n    \"street\": \"Struggle Street :(\",\r\n    \"zipcode\": \"345 45\",\r\n    \"city\": \"Lund\",\r\n    \"password\": \"admin\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/buyers/patch/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a buyer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fname\": \"ibrahim\",\r\n    \"minit\": \"IA\",\r\n    \"lname\": \"Alz\",\r\n    \"phone_number\": \"0937463534\",\r\n    \"email\": \"awesome@gmail.com\",\r\n    \"street\": \"Struggle Street :(\",\r\n    \"zipcode\": \"345 45\",\r\n    \"city\": \"Halmstad\",\r\n    \"password\": \"xxxxxxxxxxxx\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/buyers/{{buyerID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Signup (Need to signup after deleting all buyers)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"buyerID\", jsonData.buyerID);\r",
+									"pm.environment.set(\"cartID\", jsonData.cartID);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"fname\": \"admin\",\r\n        \"minit\": \"Postman\",\r\n        \"lname\": \"Postman\",\r\n        \"phone_number\": \"0937463534\",\r\n        \"email\": \"admin@gmail.com\",\r\n        \"street\": \"Postman Street :(\",\r\n        \"zipcode\": \"345 45\",\r\n        \"city\": \"Postman\",\r\n        \"password\": \"admin\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all buyers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fname\": \"ibrahim\",\r\n    \"minit\": \"IA\",\r\n    \"lname\": \"Alz\",\r\n    \"phone_number\": \"0937463534\",\r\n    \"email\": \"awesome@gmail.com\",\r\n    \"street\": \"Struggle Street :(\",\r\n    \"zipcode\": \"345 45\",\r\n    \"city\": \"Halmstad\",\r\n    \"password\": \"xxxxxxxxxxxx\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/buyers"
+					},
+					"response": []
+				},
+				{
+					"name": "Signup (It creates one buyer and then deletes it and cause the delete all buyer to fail)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"buyerID\", jsonData.buyerID);\r",
+									"pm.environment.set(\"cartID\", jsonData.cartID);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"fname\": \"admin\",\r\n        \"minit\": \"Postman\",\r\n        \"lname\": \"Postman\",\r\n        \"phone_number\": \"0937463534\",\r\n        \"email\": \"admin@gmail.com\",\r\n        \"street\": \"Postman Street :(\",\r\n        \"zipcode\": \"345 45\",\r\n        \"city\": \"Postman\",\r\n        \"password\": \"admin\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "Login Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									" var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"message\", jsonData.message);\r",
+									"pm.environment.set(\"session_isAuth\", jsonData.session_isAuth);\r",
+									"pm.environment.set(\"sessionBuyerID\", jsonData.sessionBuyerID);\r",
+									"pm.environment.set(\"session_isAdmin\", jsonData.session_isAdmin);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "put product in cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/carts/{{cartID}}/{{productID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "delete product from cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": "{{host}}/api/carts/remove/product/{{cartID}}/{{productID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "remove all Products from a cart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "{{host}}/api/carts/empty/cart/{{cartID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "get all carts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"url": "{{host}}/api/carts/"
+					},
+					"response": []
+				},
+				{
+					"name": "get cart by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"url": "{{host}}/api/carts/get/cart"
+					},
+					"response": []
+				},
+				{
+					"name": "put product in cart Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response should have valid JSON data\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    var productID = pm.environment.get(\"productID\");",
+									"",
+									"   ",
+									"",
+									"});",
+									"",
+									"var jsonData = pm.response.json();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/carts/{{cartID}}/{{productID}}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "create order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"orderID\", jsonData._id);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"buyer_id\": \"{{sessionBuyerID}}\",\r\n    \"cart_id\": \"{{cartID}}\",\r\n    \"store_id\": \"66eec22ffd317fe7f7050122\",\r\n        \"order_date\": \"2023-02-23\",\r\n        \"order_number\": \"734823048\",\r\n        \"payment_id\": \"kdsifju9ewr04\",\r\n        \"status\": \"pending\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "create order Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"buyer_id\": \"{{sessionBuyerID}}\",\r\n    \"cart_id\": \"{{cartID}}\",\r\n    \"store_id\": \"66eec22ffd317fe7f7050122\",\r\n        \"order_date\": \"2023-02-23\",\r\n        \"order_number\": \"734823048\",\r\n        \"payment_id\": \"kdsifju9ewr04\",\r\n        \"status\": \"complete\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "Get/ search an Order by a search string. In this case we are searching for an Order with city: halmstad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/orders/search/orders/halmstad"
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific order by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/orders/order/details/{{orderID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Get orders of a specific buyer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"url": "{{host}}/api/buyers/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "Update an order by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"buyer_id\": \"{{buyerID}}\",\r\n    \"cart_id\": \"{{cartID}}\",\r\n    \"store_id\": \"66eec22ffd317fe7f7050122\",\r\n        \"order_date\": \"2023-12-21\",\r\n        \"order_number\": \"734823048\",\r\n        \"payment_id\": \"kdsifju9ewr04\",\r\n        \"status\": \"pending\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/orders/{{orderID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch an order by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"buyer_id\": \"{{buyerID}}\",\r\n    \"cart_id\": \"{{cartID}}\",\r\n    \"store_id\": \"66eec22ffd317fe7f7050122\",\r\n        \"order_date\": \"2023-01-21\",\r\n        \"order_number\": \"734823048\",\r\n        \"payment_id\": \"kdsifju9ewr04\",\r\n        \"status\": \"pending\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/orders/{{orderID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an order by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{host}}/api/orders/{{orderID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all orders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{host}}/api/orders"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seller",
+			"item": [
+				{
+					"name": "Create a seller",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"sellerID\", jsonData._id);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"What is Happening\",\n    \"minit\": \"H\",\n    \"lname\": \"James\",\n    \"phone_number\": \"000202\",\n    \"email\": \"pinkmoon@postman.se\",\n    \"store_name\": \"SkyFly\",\n    \"password\": \"222332f2Sl2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/sellers"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all sellers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200). Get request accepted.\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/sellers"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a seller by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200). Get request accepted.\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "66ecff0b23f070e99ddc1409",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{host}}/api/sellers/{{sellerID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a seller by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fname\": \"www\",\r\n    \"minit\": \"www\",\r\n    \"lname\": \"www\",\r\n    \"phone_number\": \"0737449735\",\r\n    \"email\": \"wwww\",\r\n    \"street\": \"ww Street :(\",\r\n    \"zipcode\": \"345 45\",\r\n    \"city\": \"ww\",\r\n    \"password\": \"ww\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/sellers/{{sellerID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a seller by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fname\": \"ibrahim\",\r\n    \"minit\": \"IA\",\r\n    \"lname\": \"Alz\",\r\n    \"phone_number\": \"0937463534\",\r\n    \"email\": \"awesome@gmail.com\",\r\n    \"street\": \"Struggle Street :(\",\r\n    \"zipcode\": \"345 45\",\r\n    \"city\": \"Halmstad\",\r\n    \"password\": \"xxxxxxxxxxxx\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/sellers/{{sellerID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a seller Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"sellerID\", jsonData._id);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"What is Happening\",\n    \"minit\": \"H\",\n    \"lname\": \"James\",\n    \"phone_number\": \"000202\",\n    \"email\": \"pinkmoon@postman.se\",\n    \"store_name\": \"SkyFly\",\n    \"password\": \"222332f2Sl2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/sellers"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Archive",
+			"item": [
+				{
+					"name": "create order Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"orderID\", jsonData._id);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "{{sessionBuyerID}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"buyer_id\": \"{{sessionBuyerID}}\",\r\n    \"cart_id\": \"{{cartID}}\",\r\n    \"store_id\": \"66eec22ffd317fe7f7050122\",\r\n        \"order_date\": \"2023-02-23\",\r\n        \"order_number\": \"734823048\",\r\n        \"payment_id\": \"kdsifju9ewr04\",\r\n        \"status\": \"pending\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "create archive",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order_id\" : \"{{orderID}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/archive"
+					},
+					"response": []
+				},
+				{
+					"name": "get all archives",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/archive"
+					},
+					"response": []
+				},
+				{
+					"name": "get buyers archive",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/api/archive/buyers/archive/{{sessionBuyerID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Get archive for specific order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n\"buyer_id\" : \"{{buyerID}}\",\n\"order_id\" : \"{{orderID}}\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/archive/specific/order/{{sessionBuyerID}}/{{orderID}}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "Create a store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response should have valid JSON data\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.store_name).to.eql('Postman new store');",
+									"    pm.expect(jsonData.location).to.eql('Postman new store location');",
+									"    pm.expect(jsonData.org_number).to.eql(1234567897);",
+									"    pm.expect(jsonData.description).to.eql('Postman new store description');",
+									"    pm.expect(jsonData.products).to.eql(\"Postman new store products\");",
+									"    pm.expect(jsonData.sellers).to.eql(\"Postman new store sellers\");",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"storeID\", jsonData._id);",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "store_name",
+									"value": "Postman new store",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Postman new store location",
+									"type": "text"
+								},
+								{
+									"key": "org_number",
+									"value": "1234567897",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Postman new store description",
+									"type": "text"
+								},
+								{
+									"key": "products",
+									"value": "Postman new store products",
+									"type": "text"
+								},
+								{
+									"key": "sellers",
+									"value": "Postman new store sellers",
+									"type": "text"
+								},
+								{
+									"key": "logo_img",
+									"type": "file",
+									"src": "postman-cloud:///1ef8e410-6a4d-4960-81fa-f3e6403f5945"
+								}
+							]
+						},
+						"url": "{{host}}/api/stores"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all stores",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200). Get request accepted.\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/stores"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a store by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200). Get request accepted.\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/stores/{{storeID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a store by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"store_name\": \"Toy Store (put)\",\n    \"location\": \"Toy Store (put)\",\n    \"org_number\": 1111222233,\n    \"description\": \"Toy Store (put)\",\n    \"products\": \"Toy Store (put)\",\n    \"sellers\": \"Toy Store (put)\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/stores/{{storeID}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a store Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is CREATED. Status(200)\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response should have valid JSON data\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.store_name).to.eql('Postman new store');",
+									"    pm.expect(jsonData.location).to.eql('Postman new store location');",
+									"    pm.expect(jsonData.org_number).to.eql(1234567897);",
+									"    pm.expect(jsonData.description).to.eql('Postman new store description');",
+									"    pm.expect(jsonData.products).to.eql(\"Postman new store products\");",
+									"    pm.expect(jsonData.sellers).to.eql(\"Postman new store sellers\");",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"storeID\", jsonData._id);",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "store_name",
+									"value": "Postman new store",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Postman new store location",
+									"type": "text"
+								},
+								{
+									"key": "org_number",
+									"value": "1234567897",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Postman new store description",
+									"type": "text"
+								},
+								{
+									"key": "products",
+									"value": "Postman new store products",
+									"type": "text"
+								},
+								{
+									"key": "sellers",
+									"value": "Postman new store sellers",
+									"type": "text"
+								},
+								{
+									"key": "logo_img",
+									"type": "file",
+									"src": "postman-cloud:///1ef8e410-6a4d-4960-81fa-f3e6403f5945"
+								}
+							]
+						},
+						"url": "{{host}}/api/stores"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
