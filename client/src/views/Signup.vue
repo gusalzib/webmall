@@ -62,7 +62,7 @@ export default {
         },
       confirmation_message: "",
       error_message: '',
-      productionURL: 'https://webmall.onrender.com'
+      productionURL: 'https://webmall.onrender.com/api'
     }
   },
   methods: {
