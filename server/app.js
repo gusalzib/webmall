@@ -38,7 +38,8 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 const uri =
   "mongodb+srv://gusalzib:mongoose1234554321@cluster0.axnq0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-var mongoURI = process.env.MONGODB_URI || uri;
+// var mongoURI = process.env.MONGODB_URI || uri;
+var mongoURI =  uri;
 var port = process.env.PORT || 3000;
 
 
