@@ -61,13 +61,14 @@ export default {
               password: ''
         },
       confirmation_message: "",
-        error_message: ''
+      error_message: '',
+      productionURL: 'https://webmall.onrender.com'
     }
   },
   methods: {
       async signup() {
           try {
-              var response = await Api.post('/signup', this.buyer);
+              var response = await Api.post(`${this.productionURL}/signup`, this.buyer);
               if (response.status === 200) {
                   
                     document.getElementById("signup-form").reset();
