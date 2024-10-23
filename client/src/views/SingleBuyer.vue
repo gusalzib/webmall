@@ -131,7 +131,8 @@ export default {
           order_error_message: '',
           deletedOrder: '',
           stores: [],
-          order_id: ''
+          order_id: '',
+      productionURL: 'https://webmall.onrender.com/api'
         
     }
     },
@@ -143,7 +144,7 @@ export default {
         getBuyer() {
             document.getElementById("error_message").style.display = "none";
             //var buyerId = this.$route.params.buyer_id;
-            Api.get('/profile')
+            Api.get(`${this.productionURL}/profile`)
                 .then(response => {
                     this.buyer = response.data;
                 })
@@ -176,7 +177,7 @@ export default {
             try {
                 //const buyerId = this.$route.params.buyer_id;
                 // console.log('Buyer Id ' + buyerId);
-                var response = await Api.put(`/buyers/edit/profile`, this.buyer);
+                var response = await Api.put(`${this.productionURL}/buyers/edit/profile`, this.buyer);
                 
                 if (response.status === 200) {
                     setTimeout(() => {
@@ -212,7 +213,7 @@ export default {
                     const tempProduct = order.products[j];
 
                     try {
-                        const response = await Api.get(`/products/${tempProduct.product_id}`)
+                        const response = await Api.get(`${this.productionURL}/products/${tempProduct.product_id}`)
                         /* I am getting the product information from the products db, however, the 
                             quantity of the purchased products stays inside the tempProducts array. That 
                             is why I needed to merge the arrays to create a new one that contains all the
@@ -243,7 +244,7 @@ export default {
             try {
                 //const buyerId = this.$route.params.buyer_id;
                 //console.log(buyerId);
-                Api.get(`/buyers/orders`).then(async response => {
+                Api.get(`${this.productionURL}/buyers/orders`).then(async response => {
 
                     if (response.status === 200 || response.status === 304) {
                         
@@ -281,7 +282,7 @@ export default {
             }
         },
         deleteOrder(orderId) {
-            Api.delete(`orders/${orderId}`).then(response => {
+            Api.delete(`${this.productionURL}orders/${orderId}`).then(response => {
                 this.orders = this.orders.filter(order => order._id !== orderId)
                 
                 this.deletedOrder = response.data;
@@ -298,7 +299,7 @@ export default {
         getStoreInfo() {
             
             try {
-                Api.get(`/api/orders/${order_id}/stores`).then(response => {
+                Api.get(`${this.productionURL}/orders/${order_id}/stores`).then(response => {
 
                     if (response.status === 200) {
 

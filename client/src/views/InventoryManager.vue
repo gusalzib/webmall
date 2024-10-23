@@ -145,7 +145,8 @@ export default {
       searchString: '',
       deletedProduct: '',
       confirmation_message: '',
-      error_message: ''
+      error_message: '',
+      productionURL: 'https://webmall.onrender.com/api'
     }
   },
   mounted() {
@@ -153,7 +154,7 @@ export default {
   },
   methods: {
     getProducts() {
-      Api.get('/products')
+      Api.get(`${this.productionURL}/products`)
         .then((response) => {
           this.products = response.data
         })
@@ -172,7 +173,7 @@ export default {
       if (!this.category) {
         this.category = ''
       }
-      Api.get(`/products/filter/${this.category}/${this.price}/${this.name}`)
+      Api.get(`${this.productionURL}/products/filter/${this.category}/${this.price}/${this.name}`)
         .then((response) => {
           this.products = response.data
         })
@@ -185,7 +186,7 @@ export default {
       if (!this.searchString) {
         this.getProducts()
       } else {
-        Api.get(`/products/search/products/${this.searchString}`)
+        Api.get(`${this.productionURL}/products/search/products/${this.searchString}`)
           .then((response) => {
             this.products = response.data
           })
@@ -195,7 +196,7 @@ export default {
       }
     },
     deleteProduct(productId) {
-      Api.delete(`products/${productId}`)
+      Api.delete(`${this.productionURL}products/${productId}`)
         .then((response) => {
           this.products = this.products.filter(
             (product) => product._id !== productId

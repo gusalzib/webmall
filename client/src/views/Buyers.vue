@@ -38,6 +38,7 @@ export default {
     return {
         message: 'none',
         buyers: 'no registered buyer found',
+      productionURL: 'https://webmall.onrender.com/api'
         
     }
   },
@@ -46,7 +47,7 @@ export default {
   },
     methods: {
         getBuyer() {
-            Api.get('/buyers')
+            Api.get(`${this.productionURL}/buyers`)
                 .then(response => {
                     
                     this.buyers = response.data;

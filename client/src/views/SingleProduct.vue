@@ -68,7 +68,8 @@ export default {
         error_message: '',
         isLoggedIn: false,
         cartProducts: [],
-        numberOfProducts: 0
+        numberOfProducts: 0,
+      productionURL: 'https://webmall.onrender.com/api'
     })
     ,
     mounted() {
@@ -81,7 +82,7 @@ export default {
        
         getProduct() {
             const productID = this.$route.params.productID;
-            Api.get(`/single/product/${productID}`)
+            Api.get(`${this.productionURL}/single/product/${productID}`)
                 .then(response => {
                     
                     this.product = response.data;
@@ -98,7 +99,7 @@ export default {
         async addToCart(productId) {
             this.cartProducts = [];
             
-            await Api.get("/carts/get/cart",{withCredentials:true}).then(response => {
+            await Api.get(`${this.productionURL}/carts/get/cart`,{withCredentials:true}).then(response => {
                         
                         this.cart = response.data.cart;
                         this.cartProducts = this.cart.products; 
@@ -108,7 +109,7 @@ export default {
                         this.confirmation_message = error.message;
                     })
             if (this.isLoggedIn) {
-                Api.put(`/carts/${this.cartId}/${productId}`).then(response => {
+                Api.put(`${this.productionURL}/carts/${this.cartId}/${productId}`).then(response => {
                 if (response.status === 200) {
                     this.emitter.emit("requestCurrentNumber");
                     
@@ -133,7 +134,7 @@ export default {
         },
         checkLogin() {
 
-            Api.get('/login-check').then(response => {
+            Api.get(`${this.productionURL}/login-check`).then(response => {
                 this.isLoggedIn = response.data.loggedIn
                 //console.log(this.isLoggedIn)
             }).catch(error => {

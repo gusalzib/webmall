@@ -104,7 +104,8 @@ export default {
       orders: [],
       order_id: '',
       tempProduct: '',
-      buyer: ''
+      buyer: '',
+      productionURL: 'https://webmall.onrender.com/api'
     }
   },
   mounted() {
@@ -119,7 +120,7 @@ export default {
       return discountedPrice.toFixed(2)
     },
     checkLogin() {
-      Api.get('/login-check')
+      Api.get(`${this.productionURL}/login-check`)
         .then((response) => {
           this.isLoggedIn = response.data.loggedIn
           this.isAdmin = response.data.isAdmin;
@@ -140,7 +141,7 @@ export default {
 
         try {
           const response = await Api.get(
-            `/products/${this.tempProduct.product_id}`
+            `${this.productionURL}/products/${this.tempProduct.product_id}`
           )
           /* I am getting the product information from the products db, however, the 
                             quantity of the purchased products stays inside the tempProducts array. That 
@@ -169,7 +170,7 @@ export default {
     async orderHistory() {
       try {
         const orderId = this.$route.params.order_id
-        Api.get(`/orders/order/details/${orderId}`)
+        Api.get(`${this.productionURL}/orders/order/details/${orderId}`)
           .then(async (response) => {
             if (response.status === 200 || response.status === 304) {
               this.order = response.data
@@ -198,7 +199,7 @@ export default {
       }
     },
     deleteOrder(orderId) {
-      Api.delete(`orders/${orderId}`)
+      Api.delete(`${this.productionURL}orders/${orderId}`)
         .then((response) => {
           this.orders = this.orders.filter((order) => order._id !== orderId)
 
@@ -217,7 +218,7 @@ export default {
     getBuyer() {
       document.getElementById('error_message').style.display = 'none'
       //var buyerId = this.$route.params.buyer_id;
-      Api.get('/profile')
+      Api.get(`${this.productionURL}/profile`)
         .then((response) => {
           this.buyer = response.data
         })

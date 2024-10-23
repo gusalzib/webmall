@@ -84,7 +84,8 @@ export default {
             error_message: '',
             confirmation_message: '',
             stores: [],
-            selectedFile: null
+            selectedFile: null,
+      productionURL: 'https://webmall.onrender.com/api'
 
         }
     },
@@ -95,7 +96,7 @@ export default {
         getProduct() {
             document.getElementById("error_message").style.display = "none";
             var productId = this.$route.params.productID;
-            Api.get(`/products/${productId}`)
+            Api.get(`${this.productionURL}/products/${productId}`)
                 .then(response => {
                     this.product = response.data;
                 })
@@ -128,7 +129,7 @@ export default {
             
             var productId = this.$route.params.productID;
             try {
-                const res = await axios.put(`http://localhost:3000/api/products/edit/product/${productId}`, formData, {
+                const res = await axios.put(`${this.productionURL}/products/edit/product/${productId}`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
@@ -165,7 +166,7 @@ export default {
         getStoreInfo() {
 
             try {
-                Api.get(`/api/orders/${order_id}/stores`).then(response => {
+                Api.get(`${this.productionURL}/orders/${order_id}/stores`).then(response => {
 
                     if (response.status === 200) {
 

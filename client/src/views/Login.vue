@@ -42,13 +42,14 @@ export default {
               password: ''
         },
         confirmation_message : "",
-        error_message: ''
+        error_message: '',
+      productionURL: 'https://webmall.onrender.com/api'
     }
   },
   methods: {
       async login() {
           try {
-            var response = await Api.post('/login', this.buyer, {withCredentials:true});
+            var response = await Api.post(`${this.productionURL}/login`, this.buyer, {withCredentials:true});
               if (response.status === 200) {
                   // response.redirect('/signupConfirmation')
                 document.getElementById("login-form").reset();

@@ -80,7 +80,8 @@ export default {
       searchString: '',
       error_message: '',
         numberOfResults: '',
-      order_error_message:''
+      order_error_message:'',
+      productionURL: 'https://webmall.onrender.com/api'
     }
   },
   mounted() {
@@ -88,7 +89,7 @@ export default {
   },
   methods: {
     getProducts() {
-      Api.get('/products')
+      Api.get(`${this.productionURL}/products`)
         .then((response) => {
           this.products = response.data
         })
@@ -107,7 +108,7 @@ export default {
       if (!this.category) {
         this.category = ''
       }
-      Api.get(`/products/filter/${this.category}/${this.price}/${this.name}`)
+      Api.get(`${this.productionURL}/products/filter/${this.category}/${this.price}/${this.name}`)
         .then((response) => {
           this.products = response.data
         })
@@ -123,7 +124,7 @@ export default {
         document.getElementById('numberOfResults').style.display = 'none'
         this.getProducts()
       } else {
-        Api.get(`/products/search/products/${this.searchString}`)
+        Api.get(`${this.productionURL}/products/search/products/${this.searchString}`)
           .then((response) => {
             this.products = response.data
             if (this.products.length === 0) {

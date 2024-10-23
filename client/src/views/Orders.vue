@@ -71,7 +71,8 @@ export default {
       orders: [],
       searchString: '',
       isLoggedIn: false,
-      isAdmin: false
+      isAdmin: false,
+      productionURL: 'https://webmall.onrender.com/api'
     }
   },
   mounted() {
@@ -80,7 +81,7 @@ export default {
   },
   methods: {
     getOrders() {
-      Api.get('/orders')
+      Api.get(`${this.productionURL}/orders`)
         .then((response) => {
           this.orders = response.data
         })
@@ -94,7 +95,7 @@ export default {
       if (!this.searchString) {
         this.getOrders()
       } else {
-        Api.get(`/orders/search/orders/${this.searchString}`)
+        Api.get(`${this.productionURL}/orders/search/orders/${this.searchString}`)
           .then((response) => {
             this.orders = response.data
 
@@ -125,7 +126,7 @@ export default {
     },
     checkLogin() {
       try {
-        Api.get('/login-check')
+        Api.get(`${this.productionURL}/login-check`)
           .then((response) => {
             this.isLoggedIn = response.data.loggedIn
             this.isAdmin = response.data.isAdmin
@@ -152,7 +153,7 @@ export default {
     },
     getStoreInfo() {
       try {
-        Api.get(`/api/orders/${order_id}/stores`)
+        Api.get(`${this.productionURL}/orders/${order_id}/stores`)
           .then((response) => {
             if (response.status === 200) {
               this.stores = response.data

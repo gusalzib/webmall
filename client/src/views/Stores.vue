@@ -53,6 +53,7 @@ export default {
       store_name: '',
       store_category: '',
       stores: [],
+      productionURL: 'https://webmall.onrender.com/api'
     }
   },
   mounted() {
@@ -60,7 +61,7 @@ export default {
   },
   methods: {
     getStores() {
-      Api.get('/stores')
+      Api.get(`${this.productionURL}/stores`)
         .then(response => {
 
           this.stores = response.data;

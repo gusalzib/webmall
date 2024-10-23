@@ -101,6 +101,7 @@ Carts.vue
             confirmation_message: '',
             isLoggedIn: false,
             isAdmin: false,
+      productionURL: 'https://webmall.onrender.com/api'
         
     }),
     
@@ -114,7 +115,7 @@ Carts.vue
     },
     methods: {
         checkLogin() {
-            Api.get('/login-check').then(response => {
+            Api.get(`${this.productionURL}/login-check`).then(response => {
                 this.isLoggedIn = response.data.loggedIn
                 //console.log(this.isLoggedIn)
             }).catch(error => {
@@ -129,7 +130,7 @@ Carts.vue
                 this.products = [];
                 this.productAndQuantity = [];
 
-                Api.get("/carts/get/cart",{withCredentials:true})
+                Api.get(`${this.productionURL}/carts/get/cart`,{withCredentials:true})
                     .then(response => {
                         
                         this.cart = response.data.cart;
@@ -170,7 +171,7 @@ Carts.vue
 
         async getProductsInfo() {
             for (let i = 0; i<= this.cartProducts.length-1; i++){
-                await Api.get(`/products/${this.productID[i]}`).then(response => {
+                await Api.get(`${this.productionURL}/products/${this.productID[i]}`).then(response => {
                     if (response.status === 200) {
                         this.products[i] = response.data;
                     } else {
@@ -186,7 +187,7 @@ Carts.vue
         },
     
         putProductInCart(product_id){
-            Api.put(`/carts/${this.cart_id}/${product_id}`)
+            Api.put(`${this.productionURL}/carts/${this.cart_id}/${product_id}`)
                 .then(response => {
 
                     const product = this.productAndQuantity.find(product => product.cartProduct_id === product_id);
@@ -210,7 +211,7 @@ Carts.vue
                 })
         },
         removeOneProductFromCart(product_id){
-            Api.put(`/carts/remove/product/${this.cart_id}/${product_id}`)
+            Api.put(`${this.productionURL}/carts/remove/product/${this.cart_id}/${product_id}`)
                 .then(response => {
                     
                     const product =this.productAndQuantity.find(product => product.cartProduct_id === product_id); //Update product_quantity
@@ -247,7 +248,7 @@ Carts.vue
         },
         removeAllProductsFromCart(){
             
-            Api.put(`/carts/empty/cart/${this.cart_id}`)
+            Api.put(`${this.productionURL}/carts/empty/cart/${this.cart_id}`)
                 .then(response => {
                     this.cartProducts = [];
                     this.productID = [];
@@ -261,7 +262,7 @@ Carts.vue
         },
         // placeAnOrder() {
         //     var buyerId = this.cart.buyer_id;
-        //     Api.post(`/orders/${buyerId}`).then(response => {
+        //     Api.post(`${this.productionURL}/orders/${buyerId}`).then(response => {
         //         if (response.status === 200) {
         //             this.removeAllProductsFromCart()
         //             window.location.replace('/')

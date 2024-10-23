@@ -69,6 +69,7 @@ export default {
         image: ''
       },
       selectedFile: null,
+      productionURL: 'https://webmall.onrender.com/api'
     }
   },
   mounted() {
@@ -91,7 +92,7 @@ export default {
       formData.append('description', this.product.description);
       formData.append('image', this.selectedFile);
       try {
-        const res = await axios.post('http://localhost:3000/api/add/product', formData, {
+        const res = await axios.post(`${this.productionURL}/add/product`, formData, {
           Headers: {
             'Content-Type': 'multipart/form-data'
           } 

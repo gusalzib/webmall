@@ -73,7 +73,8 @@ export default {
   data() {
     return {
       message: 'none',
-      products: []
+      products: [],
+      productionURL: 'https://webmall.onrender.com/api'
     }
   },
   mounted() {
@@ -90,7 +91,7 @@ export default {
         })
     },
     getProducts() {
-      Api.get('/products/sales')
+      Api.get(`${this.productionURL}/products/sales`)
         .then((response) => {
           this.products = response.data
           //console.log(this.products)

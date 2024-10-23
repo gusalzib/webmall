@@ -60,13 +60,14 @@ export default {
               password: ''
         },
       confirmation_message: "",
-        error_message: ''
+        error_message: '',
+      productionURL: 'https://webmall.onrender.com/api'
     }
   },
   methods: {
       async signup() {
           try {
-              var response = await Api.post('/sellers', this.seller);
+              var response = await Api.post(`${this.productionURL}/sellers`, this.seller);
               if (response.status === 200) {
                   
                     document.getElementById("signup-form").reset();
@@ -80,7 +81,7 @@ export default {
                       this.triggerConfetti();
                     }, 1000);
                     setTimeout(()=>{  
-                      window.location.replace( "/login");
+                      window.location.replace( `${this.productionURL}/login`);
                     }, 3000);
               } else {
                 this.confirmation_message = "Signup failed. Please try again!";

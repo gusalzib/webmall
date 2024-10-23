@@ -239,7 +239,8 @@ export default {
         numberOfProducts: 0,
       cart: null,
       paymentID: '',
-        orderID: ''
+        orderID: '',
+      productionURL: 'https://webmall.onrender.com/api'
     }
   },
   mounted() {
@@ -291,7 +292,7 @@ export default {
             this.products = [];
             this.productAndQuantity = [];
 
-                Api.get("/carts/get/cart",{withCredentials:true})
+                Api.get(`${this.productionURL}/carts/get/cart`,{withCredentials:true})
                     .then(response => {
                         
                         this.cart = response.data.cart;
@@ -317,7 +318,7 @@ export default {
         },
         async getProductsInfo() {
             for (let i = 0; i<= this.cartProducts.length-1; i++){
-                await Api.get(`/products/${this.productID[i]}`).then(response => {
+                await Api.get(`${this.productionURL}/products/${this.productID[i]}`).then(response => {
                     if (response.status === 200) {
                         this.products[i] = response.data;
                     } else {
@@ -328,11 +329,11 @@ export default {
     },
         placeAnOrder() {
             var buyerId = this.cart.buyer_id;
-            Api.post(`/orders/${buyerId}/payment/${this.paymentID}`).then(response => {
+            Api.post(`${this.productionURL}/orders/${buyerId}/payment/${this.paymentID}`).then(response => {
               if (response.status === 200) {
                 this.orderID = response.data._id;
-                Api.put(`/carts/empty/cart/${this.cart_id}`).then(response => {
-                      window.location.replace(`/orders/order/details/${this.orderID}`)
+                Api.put(`${this.productionURL}/carts/empty/cart/${this.cart_id}`).then(response => {
+                      window.location.replace(`${this.productionURL}/orders/order/details/${this.orderID}`)
                 }).catch(error => {
                     document.getElementById('error_message').style.display = "block"
                     document.getElementById('error_message').innerHTML = error.message
@@ -353,7 +354,7 @@ export default {
         },
     async confirmPayment() {
       try {
-        const response = await Api.post('/orders/gateway/create/payment/confirmation')
+        const response = await Api.post(`${this.productionURL}/orders/gateway/create/payment/confirmation`)
         if (response.status === 200) {
           this.paymentID = response.data._id;
 
