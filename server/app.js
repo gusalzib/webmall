@@ -34,7 +34,7 @@ npm install memorystore
 // require("dotenv").config();
 // const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 // Variables
-var mongoURI = process.env.MONGODB_URI || "mongodb://localhost:27017/webmall";
+var mongoURI = process.env.MONGODB_URI || "mongodb+srv://gusalzib:i67544330B@cluster0.axnq0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 var port = process.env.PORT || 3000;
 
 // Connect to MongoDB
