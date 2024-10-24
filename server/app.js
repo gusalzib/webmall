@@ -82,28 +82,10 @@ app.use(morgan("dev"));
 // PRODUCTION MODE SETTINGS ARE TEMPORARILY COMMENTED OUT.
 /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX PRODUCTION MODE BELOW XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 // Enable cross-origin resource sharing for frontend must be registered before api
-// app.options(
-//   "*",
-//   cors({
-//     origin: "http://localhost:4173",
-//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//     credentials: true,
-//   })
-// );
-
-// app.use(
-//   cors({
-//     origin: "http://localhost:4173",
-//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//     credentials: true,
-//   })
-// );
-
-/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX DEVELOPMENT MODE BELOW XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 app.options(
   "*",
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:4173",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
@@ -111,11 +93,29 @@ app.options(
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:4173",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
+
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX DEVELOPMENT MODE BELOW XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+// app.options(
+//   "*",
+//   cors({
+//     origin: "http://localhost:5173",
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     credentials: true,
+//   })
+// );
+
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     credentials: true,
+//   })
+// );
 
 // Import routes
 app.get("/api", function (req, res) {
@@ -157,37 +157,37 @@ app.use(function (err, req, res, next) {
 });
 
 /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX DEVELOPMENT MODE BELOW XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET || "webmall",
-    store: new MemoryStore({
-      checkPeriod: 86400000,
-    }),
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 86400000,
-      secure: process.env.NODE_ENV === "production",
-      httpOnly: true,
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      path: "/",
-    },
-  })
-);
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET || "webmall",
+//     store: new MemoryStore({
+//       checkPeriod: 86400000,
+//     }),
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//       maxAge: 86400000,
+//       secure: process.env.NODE_ENV === "production",
+//       httpOnly: true,
+//       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+//       path: "/",
+//     },
+//   })
+// );
 
 // PRODUCTION MODE SETTINGS ARE TEMPORARILY COMMENTED OUT.
 /* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX PRODUCTION MODE XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
-// app.use(
-//   session({
-//     cookie: { maxAge: 86400000 },
-//     store: new MemoryStore({
-//       checkPeriod: 86400000, // prune expired entries every 24h
-//     }),
-//     resave: false,
-//     secret: "dazzling pandas",
-//     saveUninitialized: false,
-//   })
-// );
+app.use(
+  session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000, // prune expired entries every 24h
+    }),
+    resave: false,
+    secret: "dazzling pandas",
+    saveUninitialized: false,
+  })
+);
 
 
 
