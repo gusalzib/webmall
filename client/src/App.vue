@@ -233,7 +233,8 @@ export default {
       cartProducts: [],
       numberOfProducts: 0,
       newNumberOfProducts: 0,
-      isCheckingCart: false
+    isCheckingCart: false,
+      productionURL: 'https://webmall.onrender.com/api'
   }),
 
   mounted() {
@@ -267,7 +268,7 @@ export default {
     },
     checkLogin() {
       try {
-        Api.get('/login-check').then(response => {
+        Api.get(`${this.productionURL}/login-check`).then(response => {
           this.isLoggedIn = response.data.loggedIn;
           this.isAdmin = response.data.isAdmin;
           this.isSeller = response.data.isSeller;
@@ -296,7 +297,7 @@ export default {
         this.isCheckingCart = true;
         this.numberOfProducts = 0;
         this.cartProducts = [];
-        Api.get("/carts/get/cart",{withCredentials:true}).then(response =>{
+        Api.get(`${this.productionURL}/carts/get/cart`,{withCredentials:true}).then(response =>{
           this.cart = response.data.cart;
           this.cartProducts = this.cart.products;
 
@@ -316,7 +317,7 @@ export default {
     },
     logout() {
       try {
-        Api.get('/logout').then(response => {
+        Api.get(`${this.productionURL}/logout`).then(response => {
           this.isLoggedIn = response.data.loggedIn;
           this.isAdmin = response.data.isAdmin;
           this.numberOfProducts = 0;
