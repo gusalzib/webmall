@@ -36,7 +36,7 @@ npm install memorystore
 // Variables
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const uri =
-  "mongodb+srv://gusalzib:mongoose1234554321@cluster0.axnq0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+  "mongodb+srv://gusalzib:i67544330B@cluster0.axnq0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // var mongoURI = process.env.MONGODB_URI || uri;
 var mongoURI =  uri;
